@@ -3,7 +3,7 @@ window.open = function() { return null; }; // prevent popups
 
 var theater = {
 
-	VERSION: '1.1.7',
+	VERSION: 'SWU 1.1',
 
 	playerContainer: null,
 	playerContent: null,
@@ -253,6 +253,7 @@ function registerPlayer( type, object ) {
 	theater.loadVideo( "blip", "6484826", 60 )
 	theater.loadVideo( "html", "<span style='color:red;'>Hello world!</span>", 10 )
 	theater.loadVideo( "viooz", "", 0 )
+	theater.loadVideo("dailymotion", "x6bpwqp")
 
 */
 (function() {
@@ -373,6 +374,43 @@ function registerPlayer( type, object ) {
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );
 
+	var Dailymotion = function() {
+		
+		/*DM.init({
+			apiKey: API_KEY,
+			status: true, 
+			cookie: true 
+		});*/
+		
+		this.setVideo = function(id) {
+			var player = DM.player(document.getElementById('player'), {
+				video: id,
+				width: '100%',
+				height: '100%', 
+				params: {
+				  autoplay: true,
+				  mute: false
+				}
+			});
+		};
+		
+		this.setVolume = function( volume ) {
+			this.lastVolume = null;
+			this.volume = volume;
+		};
+
+		this.setStartTime = function( seconds ) {
+			this.lastStartTime = null;
+			this.startTime = seconds;
+		};
+		
+		this.seek = function( seconds ) {
+
+		};
+		
+	};
+	registerPlayer("dailymotion", Dailymotion);
+	
 	var VimeoVideo = function() {
 
 		var self = this;
