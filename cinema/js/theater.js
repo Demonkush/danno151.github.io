@@ -377,7 +377,7 @@ function registerPlayer( type, object ) {
 	var Dailymotion = function() {
 		
 		this.setVideo = function(id) {
-			var player = DM.player(document.getElementById('player'), {
+			var player = new DM.player(document.getElementById('player'), {
 				video: id,
 				width: '100%',
 				height: '100%', 
