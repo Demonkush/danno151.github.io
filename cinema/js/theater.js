@@ -376,12 +376,6 @@ function registerPlayer( type, object ) {
 
 	var Dailymotion = function() {
 		
-		/*DM.init({
-			apiKey: API_KEY,
-			status: true, 
-			cookie: true 
-		});*/
-		
 		this.setVideo = function(id) {
 			var player = DM.player(document.getElementById('player'), {
 				video: id,
@@ -405,7 +399,7 @@ function registerPlayer( type, object ) {
 		};
 		
 		this.seek = function( seconds ) {
-
+			
 		};
 		
 	};
