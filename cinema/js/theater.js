@@ -377,13 +377,13 @@ function registerPlayer( type, object ) {
 	var Dailymotion = function() {
 		
 		this.setVideo = function(id) {
-			var player = new DM.player(document.getElementById('player'), {
+			var viewer = DM.player(document.getElementById('player'), {
 				video: id,
 				width: '100%',
 				height: '100%', 
 				params: {
 				  autoplay: true,
-				  mute: false
+				  controls: true
 				}
 			});
 		};
