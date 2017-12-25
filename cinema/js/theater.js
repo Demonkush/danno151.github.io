@@ -417,7 +417,7 @@ function registerPlayer( type, object ) {
 			autostart: true,
 			primary: 'flash',
 			displaytitle: true,
-			file: "http://dingusdanis.moe/media/11-2017/2017-11-26%2008-45-05.mp4"
+			file: "https://dingusdanis.moe/media/11-2017/2017-11-26%2008-45-05.mp4"
 		});
 
 		this.setVideo = function( id ) {
