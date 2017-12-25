@@ -425,7 +425,7 @@ function registerPlayer( type, object ) {
 			this.lastVideoId = null;
 			this.videoId = id;
 			this.sentAltDuration = false;*/
-			viewer.load[{sources: [{file: id, "default": "true", type: "mp4"}]}]
+			viewer.load[{sources: [{file: "http://dingusdanis.moe/media/11-2017/2017-11-26%2008-45-05.mp4", "default": "true", type: "mp4"}]}]
 		};
 		
 		this.setVolume = function( volume ) {
