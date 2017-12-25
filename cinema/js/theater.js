@@ -372,8 +372,9 @@ function registerPlayer( type, object ) {
 
 	};
 	registerPlayer( "youtube", YouTubeVideo );
-	registerPlayer( "youtubelive", YouTubeVideo );
+	registerPlayer( "youtubelive", YouTubeVideo );	
 
+	// Currently Not Working, so left unfinished 
 	var Dailymotion = function() {
 		
 		this.setVideo = function(id) {
@@ -383,7 +384,7 @@ function registerPlayer( type, object ) {
 				height: '100%', 
 				params: {
 				  autoplay: true,
-				  controls: true
+				  mute: false
 				}
 			});
 		};
@@ -404,6 +405,45 @@ function registerPlayer( type, object ) {
 		
 	};
 	registerPlayer("dailymotion", Dailymotion);
+	
+	var AnimeHeaven = function() {
+		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
+
+		var viewer = jwplayer("player");
+		viewer.setup({
+			height: "100%",
+			width: "100%",
+			controls: false,
+			autostart: true,
+			primary: 'flash',
+			displaytitle: true,
+			file: "example.mp4"
+		});
+
+		this.setVideo = function( id ) {
+			/*this.lastStartTime = null;
+			this.lastVideoId = null;
+			this.videoId = id;
+			this.sentAltDuration = false;*/
+			viewer.load[{sources: [{file: id, "default": "true", type: "mp4"}]}]
+		};
+		
+		this.setVolume = function( volume ) {
+			this.lastVolume = null;
+			this.volume = volume;
+		};
+
+		this.setStartTime = function( seconds ) {
+			this.lastStartTime = null;
+			this.startTime = seconds;
+		};
+		
+		this.seek = function( seconds ) {
+			
+		};
+		
+	};
+	registerPlayer("animeheaven", AnimeHeaven);
 	
 	var VimeoVideo = function() {
 
