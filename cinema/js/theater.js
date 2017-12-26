@@ -533,7 +533,7 @@ function registerPlayer( type, object ) {
 				image:"//content.jwplatform.com/thumbs/7RtXk3vl-480.jpg"
 			});
 			
-		  viewer.play();
+			viewer.play();
 		  
 		});
 	
