@@ -482,6 +482,8 @@ function registerPlayer( type, object ) {
 					this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
+					
+					console.log(this.videoId);
 
 					this.lastVideoId = this.videoId;
 					this.lastStartTime = this.startTime;
