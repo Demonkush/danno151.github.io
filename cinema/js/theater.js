@@ -478,6 +478,17 @@ function registerPlayer( type, object ) {
 		this.think = function() {
 			if ( this.player != null ) {
 
+				this.player.on('error', function() {
+			
+					this.player.load({
+						file:"//content.jwplatform.com/videos/7RtXk3vl-52qL9xLP.mp4",
+						image:"//content.jwplatform.com/thumbs/7RtXk3vl-480.jpg"
+					});
+					
+					this.player.play();
+				  
+				});
+			
 				if ( this.videoId != this.lastVideoId ) {
 					this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
@@ -525,17 +536,6 @@ function registerPlayer( type, object ) {
 
 		var self = this;
 		viewer.on('ready', function(){self.onReady();});
-		
-		viewer.on('error', function() {
-			
-			viewer.load({
-				file:"//content.jwplatform.com/videos/7RtXk3vl-52qL9xLP.mp4",
-				image:"//content.jwplatform.com/thumbs/7RtXk3vl-480.jpg"
-			});
-			
-			viewer.play();
-		  
-		});
 	
 	};
 	registerPlayer("animeheaven21312", AnimeHeaven);
