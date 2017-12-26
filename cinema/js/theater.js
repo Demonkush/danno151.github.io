@@ -428,7 +428,7 @@ function registerPlayer( type, object ) {
 			Standard Player Methods
 		*/
 		this.setVideo = function( id ) {
-			console.log(id);
+			//console.log(id);
 			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
@@ -477,17 +477,6 @@ function registerPlayer( type, object ) {
 
 		this.think = function() {
 			if ( this.player != null ) {
-
-				this.player.on('error', function() {
-					console.log("ERROR");
-					this.player.load({
-						file:"//content.jwplatform.com/videos/7RtXk3vl-52qL9xLP.mp4",
-						image:"//content.jwplatform.com/thumbs/7RtXk3vl-480.jpg"
-					});
-					
-					this.player.play();
-				  
-				});
 			
 				if ( this.videoId != this.lastVideoId ) {
 					
