@@ -428,7 +428,6 @@ function registerPlayer( type, object ) {
 			Standard Player Methods
 		*/
 		this.setVideo = function( id ) {
-			//console.log(id);
 			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
@@ -480,12 +479,9 @@ function registerPlayer( type, object ) {
 			
 				if ( this.videoId != this.lastVideoId ) {
 					
-					console.log(this.videoId);
-					console.log([{file: this.videoId, "default": "true", type: "mp4"}]);
-					
-					this.player.load([{
+					/*this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
-					}]);
+					}]);*/
 
 					this.lastVideoId = this.videoId;
 					this.lastStartTime = this.startTime;
