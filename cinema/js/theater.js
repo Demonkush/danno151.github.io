@@ -490,9 +490,11 @@ function registerPlayer( type, object ) {
 				});
 			
 				if ( this.videoId != this.lastVideoId ) {
+					
+					console.log(this.videoId);
+					console.log([{file: this.videoId, "default": "true", type: "mp4"}]);
+					
 					this.player.load([{
-						console.log("checking json");
-						console.log([{file: this.videoId, "default": "true", type: "mp4"}]);
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
 
