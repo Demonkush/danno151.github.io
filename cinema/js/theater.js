@@ -527,7 +527,7 @@ function registerPlayer( type, object ) {
 		viewer.on('ready', function(){self.onReady();});
 	
 	};
-	registerPlayer("animeheaven", AnimeHeaven);
+	registerPlayer("animeheaven21312", AnimeHeaven);
 	
 	var VimeoVideo = function() {
 
