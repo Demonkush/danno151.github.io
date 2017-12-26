@@ -477,14 +477,13 @@ function registerPlayer( type, object ) {
 		this.think = function() {
 			if ( this.player != null ) {
 			
-				if ( this.videoId != this.lastVideoId ) {
-					
-					console.log(this.videoId);
-					
+				if ( this.videoId != this.lastVideoId ) {				
 					this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
 
+					console.log(this.videoId);
+					
 					this.lastVideoId = this.videoId;
 					this.lastStartTime = this.startTime;
 				}
