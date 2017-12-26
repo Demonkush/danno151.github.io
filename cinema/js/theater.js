@@ -479,7 +479,7 @@ function registerPlayer( type, object ) {
 			if ( this.player != null ) {
 
 				this.player.on('error', function() {
-			
+					console.log("ERROR");
 					this.player.load({
 						file:"//content.jwplatform.com/videos/7RtXk3vl-52qL9xLP.mp4",
 						image:"//content.jwplatform.com/thumbs/7RtXk3vl-480.jpg"
@@ -491,6 +491,7 @@ function registerPlayer( type, object ) {
 			
 				if ( this.videoId != this.lastVideoId ) {
 					this.player.load([{
+						console.log([{file: this.videoId, "default": "true", type: "mp4"}]);
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
 
