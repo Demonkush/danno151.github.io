@@ -421,7 +421,7 @@ function registerPlayer( type, object ) {
 			autostart: true,
 			primary: 'flash',
 			displaytitle: true,
-			file: "example.mp4"
+			file: "http://s10p.animeheaven.eu/720pi/Nekopara_OVA--1--1513974493.mp4?d3d98"
 		});
 
 		/*
