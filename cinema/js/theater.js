@@ -428,6 +428,7 @@ function registerPlayer( type, object ) {
 			Standard Player Methods
 		*/
 		this.setVideo = function( id ) {
+			console.log(id);
 			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
@@ -525,7 +526,7 @@ function registerPlayer( type, object ) {
 
 				if ( this.videoId != this.lastVideoId ) {
 					this.player.load([{
-						sources: eval(this.videoId)
+						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
 
 					this.lastVideoId = this.videoId;
@@ -570,9 +571,6 @@ function registerPlayer( type, object ) {
 
 		var self = this;
 		viewer.on('ready', function(){self.onReady();});
-		viewer.on("setupError", function(event) {
-			theater.playerLoadFailure();
-		});
 	
 	};
 	registerPlayer("animeheaven", AnimeHeaven);
