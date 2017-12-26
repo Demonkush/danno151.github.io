@@ -419,6 +419,7 @@ function registerPlayer( type, object ) {
 			width: "100%",
 			controls: false,
 			autostart: true,
+			primary: "flash",
 			displaytitle: true,
 			file: "example.mp4"
 		});
