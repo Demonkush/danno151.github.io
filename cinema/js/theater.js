@@ -423,7 +423,7 @@ function registerPlayer( type, object ) {
 
 		this.setVideo = function( id ) {
 			
-			fetch(id)
+			fetch("https://twist.moe/a/aho-girl/1?skin=json.json")
 			  .then(
 				function(response) {
 				  if (response.status !== 200) {
