@@ -407,12 +407,9 @@ function registerPlayer( type, object ) {
 	registerPlayer("dailymotion", Dailymotion);
 	
 	var AnimeHeaven = function() {
-		// JW7 Key
-		jwplayer.key="GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
+		// Current borrowed API until I get my own, for $60 :) kms dude
+		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
 
-		/*
-			Embed Player Object
-		*/
 		var viewer = jwplayer("player");
 		viewer.setup({
 			height: "100%",
@@ -424,9 +421,6 @@ function registerPlayer( type, object ) {
 			file: "example.mp4"
 		});
 
-		/*
-			Standard Player Methods
-		*/
 		this.setVideo = function( id ) {
 			this.lastStartTime = null;
 			this.lastVideoId = null;
@@ -458,9 +452,6 @@ function registerPlayer( type, object ) {
 			clearInterval( this.interval );
 		};
 
-		/*
-			Player Specific Methods
-		*/
 		this.getCurrentTime = function() {
 			if ( this.player != null ) {
 				return this.player.getPosition();
@@ -481,8 +472,6 @@ function registerPlayer( type, object ) {
 					this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
-
-					console.log(this.videoId);
 					
 					this.lastVideoId = this.videoId;
 					this.lastStartTime = this.startTime;
@@ -490,8 +479,8 @@ function registerPlayer( type, object ) {
 
 				// Wait until it's ready before sending Duration
 				if ( this.player.getPlaylist()[0] && this.player.getPlaylist()[0].file != "example.mp4" && !this.sentAltDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
-					console.log("RUNLUA: theater.SendAltDuration(" + this.player.getDuration() + ")");
-					this.sentAltDuration = true;
+					console.log("RUNLUA: theater.SendDuration(" + this.player.getDuration() + ")");
+					this.sentDuration = true;
 				}
 
 				if ( this.player.getState() != "idle" ) {
@@ -531,12 +520,9 @@ function registerPlayer( type, object ) {
 	registerPlayer("animeheaven21312", AnimeHeaven);
 	
 	var AnimeTwist = function() {
-		// JW7 Key
-		jwplayer.key="GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
+		// Current borrowed API until I get my own, for $60 :) kms dude
+		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
 
-		/*
-			Embed Player Object
-		*/
 		var viewer = jwplayer("player");
 		viewer.setup({
 			height: "100%",
@@ -548,9 +534,6 @@ function registerPlayer( type, object ) {
 			file: "example.mp4"
 		});
 
-		/*
-			Standard Player Methods
-		*/
 		this.setVideo = function( id ) {
 			this.lastStartTime = null;
 			this.lastVideoId = null;
@@ -582,9 +565,6 @@ function registerPlayer( type, object ) {
 			clearInterval( this.interval );
 		};
 
-		/*
-			Player Specific Methods
-		*/
 		this.getCurrentTime = function() {
 			if ( this.player != null ) {
 				return this.player.getPosition();
@@ -605,8 +585,6 @@ function registerPlayer( type, object ) {
 					this.player.load([{
 						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
-
-					console.log(this.videoId);
 					
 					this.lastVideoId = this.videoId;
 					this.lastStartTime = this.startTime;
@@ -614,8 +592,8 @@ function registerPlayer( type, object ) {
 
 				// Wait until it's ready before sending Duration
 				if ( this.player.getPlaylist()[0] && this.player.getPlaylist()[0].file != "example.mp4" && !this.sentAltDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
-					console.log("RUNLUA: theater.SendAltDuration(" + this.player.getDuration() + ")");
-					this.sentAltDuration = true;
+					console.log("RUNLUA: theater.SendDuration(" + this.player.getDuration() + ")");
+					this.sentDuration = true;
 				}
 
 				if ( this.player.getState() != "idle" ) {
