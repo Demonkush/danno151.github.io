@@ -530,6 +530,130 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer("animeheaven21312", AnimeHeaven);
 	
+	var AnimeTwist = function() {
+		// JW7 Key
+		jwplayer.key="GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
+
+		/*
+			Embed Player Object
+		*/
+		var viewer = jwplayer("player");
+		viewer.setup({
+			height: "100%",
+			width: "100%",
+			controls: false,
+			autostart: true,
+			primary: "flash",
+			displaytitle: true,
+			file: "example.mp4"
+		});
+
+		/*
+			Standard Player Methods
+		*/
+		this.setVideo = function( id ) {
+			this.lastStartTime = null;
+			this.lastVideoId = null;
+			this.videoId = id;
+			this.sentAltDuration = false;
+		};
+
+		this.setVolume = function( volume ) {
+			this.lastVolume = null;
+			this.volume = volume;
+		};
+
+		this.setStartTime = function( seconds ) {
+			this.lastStartTime = null;
+			this.startTime = seconds;
+		};
+
+		this.seek = function( seconds ) {
+			if ( this.player != null ) {
+				this.player.seek( seconds );
+
+				if ( this.player.getState() == "paused" || this.player.getState() == "idle" ) {
+					this.player.play(true);
+				}
+			}
+		};
+
+		this.onRemove = function() {
+			clearInterval( this.interval );
+		};
+
+		/*
+			Player Specific Methods
+		*/
+		this.getCurrentTime = function() {
+			if ( this.player != null ) {
+				return this.player.getPosition();
+			}
+		};
+
+		this.canChangeTime = function() {
+			if ( this.player != null ) {
+				//Is loaded and it is not buffering
+				return this.player.getState() != "buffering";
+			}
+		};
+
+		this.think = function() {
+			if ( this.player != null ) {
+			
+				if ( this.videoId != this.lastVideoId ) {				
+					this.player.load([{
+						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
+					}]);
+
+					console.log(this.videoId);
+					
+					this.lastVideoId = this.videoId;
+					this.lastStartTime = this.startTime;
+				}
+
+				// Wait until it's ready before sending Duration
+				if ( this.player.getPlaylist()[0] && this.player.getPlaylist()[0].file != "example.mp4" && !this.sentAltDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
+					console.log("RUNLUA: theater.SendAltDuration(" + this.player.getDuration() + ")");
+					this.sentAltDuration = true;
+				}
+
+				if ( this.player.getState() != "idle" ) {
+
+					if ( this.startTime != this.lastStartTime ) {
+						this.seek( this.startTime );
+						this.lastStartTime = this.startTime;
+					}
+
+					if ( this.volume != this.player.getVolume() ) {
+						this.player.setVolume( this.volume );
+						this.volume = this.player.getVolume();
+					}
+				}
+
+				if (this.player.getState() == "buffering") {
+					this.player.setControls(true);
+				}
+			}
+		};
+
+		this.onReady = function() {
+			this.player = viewer;
+
+			var self = this;
+			this.interval = setInterval( function() { self.think(self); }, 100 );
+		};
+
+		this.toggleControls = function( enabled ) {
+			this.player.setControls(enabled);
+		};
+
+		var self = this;
+		viewer.on('ready', function(){self.onReady();});
+	
+	};
+	registerPlayer("animetwist", AnimeTwist);	
+	
 	var VimeoVideo = function() {
 
 		var self = this;
