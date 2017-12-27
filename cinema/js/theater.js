@@ -407,7 +407,7 @@ function registerPlayer( type, object ) {
 	registerPlayer("dailymotion", Dailymotion);
 	
 	var AnimeHeaven = function() {
-		// Current borrowed API until I get my own, for $60 :) kms dude
+		// Currently borrowed API until I get my own, for $60 :) kms dude
 		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
 
 		var viewer = jwplayer("player");
@@ -422,6 +422,26 @@ function registerPlayer( type, object ) {
 		});
 
 		this.setVideo = function( id ) {
+			
+			fetch(id)
+			  .then(
+				function(response) {
+				  if (response.status !== 200) {
+					console.log('Looks like there was a problem. Status Code: ' +
+					  response.status);
+					return;
+				  }
+
+				  // Examine the text in the response
+				  response.json().then(function(data) {
+					console.log(data);
+				  });
+				}
+			  )
+			  .catch(function(err) {
+				console.log('Fetch Error :-S', err);
+			  });
+			
 			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
@@ -520,7 +540,7 @@ function registerPlayer( type, object ) {
 	registerPlayer("animeheaven21312", AnimeHeaven);
 	
 	var AnimeTwist = function() {
-		// Current borrowed API until I get my own, for $60 :) kms dude
+		// Currently borrowed API until I get my own, for $60 :) kms dude
 		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
 
 		var viewer = jwplayer("player");
