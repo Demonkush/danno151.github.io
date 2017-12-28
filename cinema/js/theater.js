@@ -414,14 +414,15 @@ function registerPlayer( type, object ) {
 			width: "100%",
 			controls: false,
 			autostart: true,
-			displaytitle: true
+			displaytitle: true,
+			file: "example.mp4"
 		});
 
 		this.setVideo = function( id ) {
 			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
-			this.sentAltDuration = false;
+			this.sentDuration = false;
 		};
 
 		this.setVolume = function( volume ) {
