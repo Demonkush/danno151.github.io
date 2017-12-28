@@ -414,8 +414,7 @@ function registerPlayer( type, object ) {
 			width: "100%",
 			controls: false,
 			autostart: true,
-			displaytitle: true,
-			file: "example.mp4"
+			displaytitle: true
 		});
 
 		this.setVideo = function( id ) {
