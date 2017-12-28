@@ -408,7 +408,7 @@ function registerPlayer( type, object ) {
 	
 	var AnimeTwist = function() {
 		// Currently borrowed API until I get my own, for $60 :) kms dude
-		//jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
+		jwplayer.key = "GBbtI9R8M4R2gQOTSs7m7AdoMdxpK3DD4IcgmQ==";
 
 		var viewer = jwplayer("player");
 		viewer.setup({
