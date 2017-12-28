@@ -407,7 +407,6 @@ function registerPlayer( type, object ) {
 	registerPlayer("dailymotion", Dailymotion);
 	
 	var AnimeTwist = function() {
-		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs=";
 		
 		var viewer = jwplayer("player");
 		viewer.setup({
@@ -415,7 +414,6 @@ function registerPlayer( type, object ) {
 			width: "100%",
 			controls: false,
 			autostart: true,
-			//primary: "flash",
 			displaytitle: true,
 			file: "example.mp4"
 		});
