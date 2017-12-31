@@ -515,6 +515,7 @@ function registerPlayer( type, object ) {
 	
 	};
 	registerPlayer("animetwist", AnimeTwist);	
+	registerPlayer("watchseriesmovie", AnimeTwist);
 	
 	var VimeoVideo = function() {
 
