@@ -406,7 +406,8 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer("dailymotion", Dailymotion);
 	
-	var AnimeTwist = function() {
+	var JWPlayer = function() {
+		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs==="
 		
 		var viewer = jwplayer("player");
 		viewer.setup({
@@ -514,8 +515,8 @@ function registerPlayer( type, object ) {
 		viewer.on('ready', function(){self.onReady();});
 	
 	};
-	registerPlayer("animetwist", AnimeTwist);	
-	registerPlayer("watchseriesmovie", AnimeTwist);
+	registerPlayer("animetwist", JWPlayer);	
+	registerPlayer("watchseriesmovie", JWPlayer);
 	
 	var VimeoVideo = function() {
 
