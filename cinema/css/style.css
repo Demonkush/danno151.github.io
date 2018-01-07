@@ -21,7 +21,7 @@ body {
 }
 
 .logo {
-	background-image: url(../images/theaterwelcome.png);
+	background-image: url(../images/theaterwelcome.jpeg);
 	background-repeat: no-repeat;
 	background-size: 60% 90%;
 	background-position: center; 
@@ -82,42 +82,10 @@ body {
 	-webkit-box-align: center;
 	-webkit-box-orient: vertical;
 }
-header-container
+
 .welcome {
 	width: 100%;
 	height: 100%;
-}
-
-//.top-curtain {
-	background-image: url(../images/curtaintop2.png);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: top;
-	width: 100%;
-	height: 80px;
-	position: fixed;
-}
-
-//.left-curtain {
-	background-image: url(../images/curtainleft.png);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: right;
-	width: 640px;
-	height: 100%;
-	position: fixed;
-	left: -500px;
-}
-
-//.right-curtain {
-	background-image: url(../images/curtainright.png);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: left;
-	width: 640px;
-	height: 100%;
-	position: fixed;
-	right: -500px;
 }
 
 .info {
