@@ -494,7 +494,11 @@ function registerPlayer( type, object ) {
 				}
 
 				if (this.player.getState() == "buffering") {
-					this.player.setCurrentQuality(0);
+					console.log("buffering");
+					if ( this.player.getCurrentQuality() != 0 ) {
+						this.player.setCurrentQuality(0);
+						console.log("Video buffering, setting lower quality.");
+					}
 					this.player.setControls(true);
 				}
 			}
