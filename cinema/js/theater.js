@@ -415,7 +415,8 @@ function registerPlayer( type, object ) {
 			width: "100%",
 			controls: false,
 			autostart: true,
-			displaytitle: true
+			displaytitle: true,
+			file: "example.mp4"
 		});
 
 		this.setVideo = function( id ) {
@@ -457,6 +458,7 @@ function registerPlayer( type, object ) {
 
 		this.canChangeTime = function() {
 			if ( this.player != null ) {
+				//Is loaded and it is not buffering
 				return this.player.getState() != "buffering";
 			}
 		};
@@ -473,7 +475,8 @@ function registerPlayer( type, object ) {
 					this.lastStartTime = this.startTime;
 				}
 
-				if ( this.player.getPlaylist()[0] && !this.sentDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
+				// Wait until it's ready before sending Duration
+				if ( this.player.getPlaylist()[0] && this.player.getPlaylist()[0].file != "example.mp4" && !this.sentAltDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
 					console.log("RUNLUA: theater.SendDuration(" + this.player.getDuration() + ")");
 					this.sentDuration = true;
 				}
@@ -492,7 +495,6 @@ function registerPlayer( type, object ) {
 				}
 
 				if (this.player.getState() == "buffering") {
-					//this.player.setCurrentQuality(0);
 					this.player.setControls(true);
 				}
 			}
