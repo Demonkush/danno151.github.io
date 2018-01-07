@@ -407,7 +407,7 @@ function registerPlayer( type, object ) {
 	registerPlayer("dailymotion", Dailymotion);
 	
 	var JWPlayer = function() {
-		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs==="
+		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs===";
 		
 		var viewer = jwplayer("player");
 		viewer.setup({
