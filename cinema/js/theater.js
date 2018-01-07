@@ -495,7 +495,7 @@ function registerPlayer( type, object ) {
 
 				if (this.player.getState() == "buffering") {
 					console.log("buffering");
-					this.player.getCurrentQuality();
+					console.log(this.player.getCurrentQuality());
 					if ( this.player.getCurrentQuality() != 0 ) {
 						this.player.setCurrentQuality(0);
 						console.log("Video buffering, setting lower quality.");
