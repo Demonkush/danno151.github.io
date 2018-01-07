@@ -492,7 +492,7 @@ function registerPlayer( type, object ) {
 				}
 
 				if (this.player.getState() == "buffering") {
-					this.player.setCurrentQuality(0);
+					//this.player.setCurrentQuality(0);
 					this.player.setControls(true);
 				}
 			}
