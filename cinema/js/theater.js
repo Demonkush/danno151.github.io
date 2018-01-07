@@ -475,8 +475,7 @@ function registerPlayer( type, object ) {
 					this.lastStartTime = this.startTime;
 				}
 
-				// Wait until it's ready before sending Duration
-				if ( this.player.getPlaylist()[0] && this.player.getPlaylist()[0].file != "example.mp4" && !this.sentAltDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
+				if ( this.player.getPlaylist()[0] && !this.sentDuration && this.player.getState() == "playing" && this.player.getDuration() > 0 ) {
 					console.log("RUNLUA: theater.SendDuration(" + this.player.getDuration() + ")");
 					this.sentDuration = true;
 				}
@@ -495,6 +494,7 @@ function registerPlayer( type, object ) {
 				}
 
 				if (this.player.getState() == "buffering") {
+					this.player.setCurrentQuality(0);
 					this.player.setControls(true);
 				}
 			}
