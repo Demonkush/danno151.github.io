@@ -65,6 +65,8 @@ var theater = {
 	},
 
 	loadVideo: function( type, data, startTime ) {
+		
+		$("body").css("background", "");
 
 		if ( ( type === null ) || ( data === null ) ) return;
 		
