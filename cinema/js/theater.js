@@ -66,7 +66,9 @@ var theater = {
 
 	loadVideo: function( type, data, startTime ) {
 		
-		$("body").css("background", "");
+		$("body").remove(".logo-container");
+		$("body").css("background", "none");
+		console.log("Removed background for better quality.");
 
 		if ( ( type === null ) || ( data === null ) ) return;
 		
