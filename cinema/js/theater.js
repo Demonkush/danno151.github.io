@@ -3,7 +3,7 @@ window.open = function() { return null; }; // prevent popups
 
 var theater = {
 
-	VERSION: 'SWU 1.1',
+	VERSION: 'SWU 1.4',
 
 	playerContainer: null,
 	playerContent: null,
@@ -420,7 +420,7 @@ function registerPlayer( type, object ) {
 			controls: false,
 			autostart: true,
 			displaytitle: true,
-			file: "example.mp4"
+			repeat: false
 		});
 
 		this.setVideo = function( id ) {
