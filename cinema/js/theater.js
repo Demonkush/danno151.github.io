@@ -519,6 +519,7 @@ function registerPlayer( type, object ) {
 	
 	};
 	registerPlayer("animetwist", JWPlayer);	
+	registerPlayer("6562436243", JWPlayer);
 	registerPlayer("thewatchseries", JWPlayer);
 	
 	var VimeoVideo = function() {
