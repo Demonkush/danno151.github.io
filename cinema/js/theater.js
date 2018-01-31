@@ -420,6 +420,7 @@ function registerPlayer( type, object ) {
 			controls: false,
 			autostart: true,
 			displaytitle: true,
+			file: "setup.mp4",
 			repeat: false
 		});
 
