@@ -473,7 +473,7 @@ function registerPlayer( type, object ) {
 			
 				if ( this.videoId != this.lastVideoId ) {				
 					this.player.load([{
-						sources: [{file: this.videoId, "default": "true", type: "mp4"}]
+						sources: eval(this.videoId) //[{file: this.videoId, "default": "true", type: "mp4"}]
 					}]);
 					
 					this.lastVideoId = this.videoId;
