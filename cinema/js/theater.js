@@ -377,38 +377,6 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );	
-
-	// Currently Not Working, so left unfinished 
-	var Dailymotion = function() {
-		
-		this.setVideo = function(id) {
-			var viewer = DM.player(document.getElementById('player'), {
-				video: id,
-				width: '100%',
-				height: '100%', 
-				params: {
-				  autoplay: true,
-				  mute: false
-				}
-			});
-		};
-		
-		this.setVolume = function( volume ) {
-			this.lastVolume = null;
-			this.volume = volume;
-		};
-
-		this.setStartTime = function( seconds ) {
-			this.lastStartTime = null;
-			this.startTime = seconds;
-		};
-		
-		this.seek = function( seconds ) {
-			
-		};
-		
-	};
-	registerPlayer("dailymotion", Dailymotion);
 	
 	var jwRTMP = function() { // Using JW Player 7
 		jwplayer.key = "veiZLEtF5MN3yp1rEB5Txxo0a/LgIg5tGe5IqSUcNDc=";
@@ -420,8 +388,7 @@ function registerPlayer( type, object ) {
 			controls: false,
 			autostart: true,
 			displaytitle: true,
-			file: "setup.mp4",
-			repeat: false
+			file: "setup.mp4"
 		});	
 
 		this.setVideo = function( id ) {
@@ -527,8 +494,7 @@ function registerPlayer( type, object ) {
 			controls: false,
 			autostart: true,
 			displaytitle: true,
-			file: "setup.mp4",
-			repeat: false
+			file: "setup.mp4"
 		});
 
 		this.setVideo = function( id ) {
