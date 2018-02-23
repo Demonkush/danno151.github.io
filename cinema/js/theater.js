@@ -410,6 +410,113 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer("dailymotion", Dailymotion);
 	
+	var jwRTMP = function() { // Using JW Player 7
+		jwplayer.key = "veiZLEtF5MN3yp1rEB5Txxo0a/LgIg5tGe5IqSUcNDc=";
+		
+		var viewer = jwplayer("player");
+		viewer.setup({
+			height: "100%",
+			width: "100%",
+			controls: false,
+			autostart: true,
+			displaytitle: true,
+			file: "setup.mp4",
+			repeat: false
+		});	
+
+		this.setVideo = function( id ) {
+			this.lastStartTime = null;
+			this.lastVideoId = null;
+			this.videoId = id;
+		};
+		
+		this.setVolume = function( volume ) {
+			this.lastVolume = null;
+			this.volume = volume;
+		};
+
+		this.setStartTime = function( seconds ) {
+			this.lastStartTime = null;
+			this.startTime = seconds;
+		};
+		
+		this.seek = function( seconds ) {
+			if ( this.player != null ) {
+				this.player.seek( seconds );
+
+				if ( this.player.getState() == "paused" || this.player.getState() == "idle" ) {
+					this.player.play(true);
+				}
+			}
+		};
+		
+		this.onRemove = function() {
+			clearInterval( this.interval );
+		};
+
+		this.getCurrentTime = function() {
+			if ( this.player != null ) {
+				return this.player.getPosition();
+			}
+		};
+
+		this.canChangeTime = function() {
+			if ( this.player != null ) {
+				//Is loaded and it is not buffering
+				return this.player.getState() != "buffering"; // RE-LOOK, not sure if buffering is called with RTMP or not
+			}
+		};
+		
+		this.think = function() {
+			if ( this.player != null ) {
+			
+				if ( this.videoId != this.lastVideoId ) {				
+					this.player.load([{
+						sources: [{
+							file: "rtmp://66.150.214.91:1935/live/" + this.videoId
+						}]
+					}]);
+					
+					this.lastVideoId = this.videoId;
+					this.lastStartTime = this.startTime;
+				}
+
+				if ( this.player.getState() != "idle" ) {
+
+					if ( this.startTime != this.lastStartTime ) {
+						this.seek( this.startTime );
+						this.lastStartTime = this.startTime;
+					}
+
+					if ( this.volume != this.player.getVolume() ) {
+						this.player.setVolume( this.volume );
+						this.volume = this.player.getVolume();
+					}
+				}
+
+				if (this.player.getState() == "buffering") {
+					this.player.setControls(true);
+				}
+			}
+		};
+		
+		this.onReady = function() {
+			this.player = viewer;
+
+			var self = this;
+			this.interval = setInterval( function() { self.think(self); }, 100 );
+		};
+
+		this.toggleControls = function( enabled ) {
+			this.player.setControls(enabled);
+		};
+
+		var self = this;
+		viewer.on('ready', function(){self.onReady();});
+		
+	};
+	registerPlayer("swuRTMP", jwRTMP);
+	
 	var JWPlayer = function() {
 		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs===";
 		
