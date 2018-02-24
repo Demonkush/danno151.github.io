@@ -395,7 +395,7 @@ function registerPlayer( type, object ) {
 		
 		this.setVolume = function( volume ) {
 			this.lastVolume = null;
-			this.volume = volume;
+			this.volume = volume / 100;
 		};
 		
 		this.onRemove = function() {
@@ -409,7 +409,8 @@ function registerPlayer( type, object ) {
 					this.player.src({
 						type: 'rtmp/mp4',
 						src: 'rtmp://66.150.214.91:1935/live/' + this.videoId
-					});				
+					});		
+					
 					this.lastVideoId = this.videoId;
 				}
 
