@@ -378,8 +378,9 @@ function registerPlayer( type, object ) {
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );	
 	
-	var swuRTMP = function() {
-
+	var RTMP = function() {
+		console.log("RTMP Called.");
+		
 		var viewer = videojs("player", {
 			height: "100%",
 			width: "100%",
@@ -389,6 +390,7 @@ function registerPlayer( type, object ) {
 		});
 		
 		this.setVideo = function( id ) {
+			console.log("Setting " + id);
 			this.lastVideoId = null;
 			this.videoId = id;
 		};
@@ -452,7 +454,7 @@ function registerPlayer( type, object ) {
 		viewer.on('ready', function(){self.onReady();});
 		
 	};
-	registerPlayer("swuRTMP", swuRTMP);
+	registerPlayer("swuRTMP", RTMP);
 	
 	var JWPlayer = function() {
 		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs===";
