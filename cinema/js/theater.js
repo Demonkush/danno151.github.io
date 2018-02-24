@@ -414,6 +414,11 @@ function registerPlayer( type, object ) {
 					this.lastVideoId = this.videoId;
 				}
 
+				if ( this.volume != this.lastVolume ) {
+					this.player.volume( this.volume );
+					this.lastVolume = this.volume;
+				}
+				
 			}
 		};
 		
