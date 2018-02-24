@@ -379,51 +379,28 @@ function registerPlayer( type, object ) {
 	registerPlayer( "youtubelive", YouTubeVideo );	
 	
 	var RTMP = function() {
-		console.log("RTMP Called.");
 		
 		var viewer = videojs("player", {
 			height: "100%",
 			width: "100%",
 			preload: 'auto',
 			autoplay: true,
-			flash: {swf: 'http://unpkg.com/videojs-swf@5.4.0/dist/video-js.swf'}
+			flash: {swf: 'video-js-6.7.3/video-js.swf'}
 		});
 		
 		this.setVideo = function( id ) {
-			console.log("Setting " + id);
 			this.lastVideoId = null;
 			this.videoId = id;
 		};
 		
-		/*this.setVolume = function( volume ) {
+		this.setVolume = function( volume ) {
 			this.lastVolume = null;
 			this.volume = volume;
-		};
-
-		this.setStartTime = function( seconds ) {
-			this.lastStartTime = null;
-			this.startTime = seconds;
-		};
-		
-		this.seek = function( seconds ) {
-			if ( this.player != null ) {
-				this.player.seek( seconds );
-
-				if ( this.player.getState() == "paused" || this.player.getState() == "idle" ) {
-					this.player.play(true);
-				}
-			}
 		};
 		
 		this.onRemove = function() {
 			clearInterval( this.interval );
 		};
-
-		this.getCurrentTime = function() {
-			if ( this.player != null ) {
-				return this.player.getPosition();
-			}
-		};*/
 		
 		this.think = function() {
 			if ( this.player != null ) {
