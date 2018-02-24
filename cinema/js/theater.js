@@ -378,26 +378,22 @@ function registerPlayer( type, object ) {
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );	
 	
-	var jwRTMP = function() { // Using JW Player 7
-		jwplayer.key = "veiZLEtF5MN3yp1rEB5Txxo0a/LgIg5tGe5IqSUcNDc=";
-		
-		var viewer = jwplayer("player");
-		viewer.setup({
+	var swuRTMP = function() {
+
+		var viewer = videojs("player", {
 			height: "100%",
 			width: "100%",
-			controls: false,
-			autostart: true,
-			displaytitle: true,
-			file: "setup.mp4"
-		});	
-
+			preload: 'auto',
+			autoplay: true,
+			flash: {swf: 'http://unpkg.com/videojs-swf@5.4.0/dist/video-js.swf'}
+		});
+		
 		this.setVideo = function( id ) {
-			this.lastStartTime = null;
 			this.lastVideoId = null;
 			this.videoId = id;
 		};
 		
-		this.setVolume = function( volume ) {
+		/*this.setVolume = function( volume ) {
 			this.lastVolume = null;
 			this.volume = volume;
 		};
@@ -425,45 +421,19 @@ function registerPlayer( type, object ) {
 			if ( this.player != null ) {
 				return this.player.getPosition();
 			}
-		};
-
-		this.canChangeTime = function() {
-			if ( this.player != null ) {
-				//Is loaded and it is not buffering
-				return this.player.getState() != "buffering"; // RE-LOOK, not sure if buffering is called with RTMP or not
-			}
-		};
+		};*/
 		
 		this.think = function() {
 			if ( this.player != null ) {
 			
 				if ( this.videoId != this.lastVideoId ) {				
-					this.player.load([{
-						sources: [{
-							file: "rtmp://66.150.214.91:1935/live/" + this.videoId
-						}]
-					}]);
-					
+					this.player.src({
+						type: 'rtmp/mp4',
+						src: 'rtmp://66.150.214.91:1935/live/' + this.videoId
+					});				
 					this.lastVideoId = this.videoId;
-					this.lastStartTime = this.startTime;
 				}
 
-				if ( this.player.getState() != "idle" ) {
-
-					if ( this.startTime != this.lastStartTime ) {
-						this.seek( this.startTime );
-						this.lastStartTime = this.startTime;
-					}
-
-					if ( this.volume != this.player.getVolume() ) {
-						this.player.setVolume( this.volume );
-						this.volume = this.player.getVolume();
-					}
-				}
-
-				if (this.player.getState() == "buffering") {
-					this.player.setControls(true);
-				}
 			}
 		};
 		
@@ -482,7 +452,7 @@ function registerPlayer( type, object ) {
 		viewer.on('ready', function(){self.onReady();});
 		
 	};
-	registerPlayer("swuRTMP", jwRTMP);
+	registerPlayer("swuRTMP", swuRTMP);
 	
 	var JWPlayer = function() {
 		jwplayer.key = "kr/h7NbmU/i5e/b4iOmA3uY3vKg7V+EclIeqcdw9ELs===";
