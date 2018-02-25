@@ -1,4 +1,7 @@
 {
 	"dan":{"title":"Dan's RTMP Stream"},
-	"mama":{"title":"Mama Purin's RTMP Stream"}
+	"purin":{"title":"Mama Purin's RTMP Stream"}
+	"static":{"title":"Static's RTMP Stream"}
+	"yumi":{"title":"Yumi's RTMP Stream"}
+	"awoo":{"title":"Awoo's RTMP Stream"}
 }
