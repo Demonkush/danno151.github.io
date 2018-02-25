@@ -3,5 +3,7 @@
 	"purin":{"title":"Mama Purin's RTMP Stream"},
 	"static":{"title":"Static's RTMP Stream"},
 	"yumi":{"title":"Yumi's RTMP Stream"},
-	"awoo":{"title":"Awoo's RTMP Stream"}
+	"awoo":{"title":"Awoo's RTMP Stream"},
+	"ynot":{"title":"TheEpicYnot's RTMP Stream"},
+	"maguro":{"title":"Maguro Man's RTMP Stream"}
 }
