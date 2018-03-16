@@ -377,6 +377,64 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );	
+
+	var Twitch = function() {
+		
+		var viewer = new Twitch.Player("player", {
+			height: "100%",
+			width: "100%",
+			autoplay: true
+		});
+		
+		this.setVideo = function( id ) {
+			this.lastVideoId = null;
+			this.videoId = id;
+		};
+		
+		this.setVolume = function( volume ) {
+			this.lastVolume = null;
+			this.volume = volume / 100;
+		};
+		
+		this.onRemove = function() {
+			clearInterval( this.interval );
+		};
+		
+		this.think = function() {
+			if ( this.player != null ) {
+			
+				if ( this.videoId != this.lastVideoId ) {	
+					if(/^\d+$/.test(this.videoId)) {
+						this.player.setVideo(this.videoId);
+					} else {
+						this.player.setChannel(this.videoId);
+					}
+				}
+
+				if ( this.volume != this.lastVolume ) {
+					this.player.setVolume( this.volume );
+					this.lastVolume = this.volume;
+				}
+				
+			}
+		};
+		
+		this.onReady = function() {
+			this.player = viewer;
+
+			var self = this;
+			this.interval = setInterval( function() { self.think(self); }, 100 );
+		};
+
+		this.toggleControls = function( enabled ) {
+			this.player.setControls(enabled);
+		};
+
+		var self = this;
+		viewer.on('ready', function(){self.onReady();});
+		
+	};
+	registerPlayer("twitch", Twitch);
 	
 	var RTMP = function() {
 		
