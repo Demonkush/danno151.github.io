@@ -378,7 +378,7 @@ function registerPlayer( type, object ) {
 	registerPlayer( "youtube", YouTubeVideo );
 	registerPlayer( "youtubelive", YouTubeVideo );	
 
-	var Twitch = function() {
+	var TwitchVideo = function() {
 		
 		var viewer = new Twitch.Player("player", {
 			height: "100%",
@@ -396,6 +396,12 @@ function registerPlayer( type, object ) {
 			this.volume = volume / 100;
 		};
 		
+		this.seek = function( seconds ) {
+			if ( this.player !== null ) {
+				this.player.seek(seconds);
+			}
+		};
+		
 		this.onRemove = function() {
 			clearInterval( this.interval );
 		};
@@ -405,10 +411,14 @@ function registerPlayer( type, object ) {
 			
 				if ( this.videoId != this.lastVideoId ) {	
 					if(/^\d+$/.test(this.videoId)) {
-						this.player.setVideo(this.videoId);
+						this.player.setVideo("v" + this.videoId);
+						console.log("video");
 					} else {
 						this.player.setChannel(this.videoId);
+						console.log("channel");
 					}
+					
+					this.lastVideoId = this.videoId;
 				}
 
 				if ( this.volume != this.lastVolume ) {
@@ -418,23 +428,23 @@ function registerPlayer( type, object ) {
 				
 			}
 		};
-		
+	
+		this.toggleControls = function( enabled ) {
+			this.player.setControls(enabled);
+		};
+	
 		this.onReady = function() {
 			this.player = viewer;
-
+	
 			var self = this;
 			this.interval = setInterval( function() { self.think(self); }, 100 );
 		};
 
-		this.toggleControls = function( enabled ) {
-			this.player.setControls(enabled);
-		};
-
 		var self = this;
-		viewer.on('ready', function(){self.onReady();});
+		self.onReady();
 		
 	};
-	registerPlayer("twitch", Twitch);
+	registerPlayer("twitch", TwitchVideo);
 	
 	var RTMP = function() {
 		
