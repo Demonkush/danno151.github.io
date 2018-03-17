@@ -412,10 +412,8 @@ function registerPlayer( type, object ) {
 				if ( this.videoId != this.lastVideoId ) {	
 					if(/^\d+$/.test(this.videoId)) {
 						this.player.setVideo("v" + this.videoId);
-						console.log("video");
 					} else {
 						this.player.setChannel(this.videoId);
-						console.log("channel");
 					}
 					
 					this.lastVideoId = this.videoId;
@@ -445,6 +443,7 @@ function registerPlayer( type, object ) {
 		
 	};
 	registerPlayer("twitch", TwitchVideo);
+	registerPlayer("twitchlivestream", TwitchVideo);
 	
 	var RTMP = function() {
 		
