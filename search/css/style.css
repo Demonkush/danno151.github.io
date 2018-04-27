@@ -8,7 +8,7 @@ html, body { height: 100%; }
 }
 
 body {
-	background: -webkit-radial-gradient(center, ellipse cover, #212121 0%,#161616 100%);
+	background: -webkit-radial-gradient(center, ellipse cover, #333333 30%,#111111 100%);
 	color: white;
 	font-family: 'Sniglet', cursive;
 }
@@ -139,7 +139,7 @@ nav a:hover {
 }
 
 h1 {
-	font-size: 20pt;
+	font-size: 18pt;
 	text-shadow: 0px 0px 8px rgba(0,0,0,0.88);
 }
 
