@@ -616,7 +616,7 @@ function registerPlayer( type, object ) {
 	};
 	registerPlayer("animetwist", JWPlayer);	
 	registerPlayer("NineAnime", JWPlayer);
-	registerPlayer("masteraniT2", JWPlayer);
+	registerPlayer("masterani", JWPlayer);
 	
 	var VimeoVideo = function() {
 
