@@ -31,7 +31,7 @@ body {
 
 .logo-container {
 	position: absolute;
-	top: 100px;
+	top: 50px;
 	left: 0;
 	right: 0;
 	height: 500px;
@@ -55,7 +55,7 @@ body {
 
 .info-container {
 	position: absolute;
-	top: 425px;
+	top: 475px;
 	left: 140px;
 	right: 140px;
 	bottom: 120px;
